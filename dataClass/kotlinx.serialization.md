@@ -9,6 +9,7 @@
 - ```
   @Serializable
   data class Project(
+      @SerializedName("name")
       val name: String,
       val owner: User, 
       val language: String = "Kotlin"
@@ -50,7 +51,7 @@
       .client(okHttpClient)
       .baseUrl(BASE_URL)
       .addConverterFactory(Json{
-          isLenient = true
+          coerceInputValues = true
       }.asConverterFactory("application/json".toMediaType()))
       .build()
   ```
