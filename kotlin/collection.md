@@ -26,32 +26,24 @@
     ```
     val map = mutableMapOf(1 to "x", 2 to "y", -1 to "zz")
     map[1] = "a"
-    ->{1=a, 2=y, -1=zz}
+    -> {1=a, 2=y, -1=zz}
     ```
 * Conclude
   * reduce
     ```
     listOf(1, 2, 3).reduce {result,item -> result * item}
     -> 6
-     
-    public inline fun <S, T : S> Iterable<T>.reduce(operation: (acc: S, T) -> S): S {
-        val iterator = this.iterator()
-        if (!iterator.hasNext()) throw UnsupportedOperationException("Empty collection can't be reduced.")
-        var accumulator: S = iterator.next()
-        while (iterator.hasNext()) {
-            accumulator = operation(accumulator, iterator.next())
-        }
-        return accumulator
-    }
     ```
   * fold
     ```
     listOf(1, 2, 3).fold(2) {result,item -> result * item}
     -> 12
-   
-    public inline fun <T, R> Iterable<T>.fold(initial: R, operation: (acc: R, T) -> R): R {
-      var accumulator = initial
-      for (element in this) accumulator = operation(accumulator, element)
-      return accumulator
-    }
+    ```
+* Change
+  * map
+    > 배열의 각 요소에 지정된 변환 함수를 적용한 결과가 포함 된 목록을 반환
+    ```
+    val numbers = listOf(1, 2, 3)
+    println(numbers.map { it * it })
+    -> [1, 4, 9]
     ```

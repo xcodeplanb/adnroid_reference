@@ -14,3 +14,8 @@
 
 - 해결 : app/build/reports/lint-results-release-fatal.html 내용 참고
 
+### 1. compile_and_runtime_not_namespaced_r_class_jar ... because it is being used by another process
+
+- 원인 : being used by another process
+
+- 해결 : 윈도우 cmd -> taskkill /im java.exe /f
